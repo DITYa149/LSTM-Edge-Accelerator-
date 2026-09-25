@@ -1,0 +1,81 @@
+{
+    "architecture": {
+        "input_shape": [
+            10,
+            4
+        ],
+        "lstm_hidden_units": 16,
+        "dense_units": 16,
+        "output_units": 4,
+        "dropout_rate": 0.1
+    },
+    "lstm": {
+        "gate_order": [
+            "forget",
+            "input",
+            "candidate",
+            "output"
+        ],
+        "forget_activation": "sigmoid",
+        "input_activation": "sigmoid",
+        "candidate_activation": "tanh",
+        "output_activation": "sigmoid",
+        "initial_state": "zeros"
+    },
+    "dense": {
+        "activation": "PReLU",
+        "initialization": "He"
+    },
+    "output": {
+        "activation": "linear"
+    },
+    "optimizer": {
+        "name": "Adam",
+        "learning_rate": 0.001
+    },
+    "loss": "MSE",
+    "training": {
+        "epochs": 100,
+        "batch_size": 32,
+        "random_seed": 42,
+        "best_epoch": 90
+    },
+    "parameters": {
+        "total_trainable_parameters": 1700
+    },
+    "features": [
+        "temperature_C",
+        "solar_radiation_Wm2",
+        "humidity_pct",
+        "co2_concentration_ppm"
+    ],
+    "metrics": {
+        "train_mse": 0.030251119285821915,
+        "validation_mse": 0.032736264169216156,
+        "test_mse": 0.033076148480176926,
+        "test_rmse": 0.18186849355697632,
+        "test_mae": 0.12164943665266037
+    },
+    "sensor_metrics": {
+        "temperature_C": {
+            "MSE": 0.010836360976099968,
+            "RMSE": 0.10409784317016602,
+            "MAE": 0.08271299302577972
+        },
+        "solar_radiation_Wm2": {
+            "MSE": 0.0038530605379492044,
+            "RMSE": 0.06207302585244179,
+            "MAE": 0.044665221124887466
+        },
+        "humidity_pct": {
+            "MSE": 0.03245395049452782,
+            "RMSE": 0.18014979362487793,
+            "MAE": 0.1285628378391266
+        },
+        "co2_concentration_ppm": {
+            "MSE": 0.0851612314581871,
+            "RMSE": 0.29182398319244385,
+            "MAE": 0.2306566685438156
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+  "numeric_format": {
+    "signed": true,
+    "width_bits": 16,
+    "fraction_bits": 12,
+    "real_range": [
+      -8.0,
+      7.999755859375
+    ],
+    "rounding": "nearest, exact halves away from zero",
+    "overflow": "saturate"
+  },
+  "architecture": {
+    "sequence_length": 10,
+    "input_size": 4,
+    "hidden_size": 16,
+    "dense_size": 16,
+    "output_size": 4
+  },
+  "gate_order": [
+    "forget",
+    "input",
+    "candidate",
+    "output"
+  ],
+  "lstm_math": "z=round_shift(x*W + h*U + (bias<<F)); c=saturate(f*c + i*g); h=round_shift(o*tanh(c))",
+  "lut": {
+    "entries": 1025,
+    "input_range_real": [
+      -8.0,
+      8.0
+    ],
+    "input_clamp": true,
+    "index_formula": "clamp((clamped_code + LIMIT_CODE + STEP_CODE/2) // STEP_CODE, 0, 1024)"
+  },
+  "memory_order": {
+    "inputs": "time-major then feature",
+    "lstm_weights": "gate file: neuron-major then input/state index",
+    "dense_weights": "output-neuron-major then input index",
+    "traces": "time-major then neuron; z is forget,input,candidate,output blocks"
+  },
+  "files": {
+    "parameters": "mem/",
+    "test_inputs": "mem/input_case_###.mem",
+    "expected_values": "expected/case_###_*.mem"
+  },
+  "cases_exported": 1,
+  "saturations_during_export": 0
+}

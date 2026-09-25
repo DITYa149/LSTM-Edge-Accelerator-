@@ -1,0 +1,4 @@
+dataset,samples,sequence_length,input_features,target_features
+train,11520,10,4,4
+validation,2461,10,4,4
+test,2461,10,4,4
