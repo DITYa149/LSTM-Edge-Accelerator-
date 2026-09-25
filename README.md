@@ -1,5 +1,6 @@
 # LSTM-Edge-Accelerator-
 ** Project under Constriction wait for RTL simulation part to be uploaded in project Folder, Training is complete with golden Reference Extraction**
+
 A hardware-oriented Edge AI accelerator project that combines an LSTM neural network with a rule-based environmental classification block to analyze and predict conditions in a synthetic Mars-like environment.
 
 The project starts with synthetic multi-sensor time-series data representing:
